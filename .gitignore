@@ -1,3 +1,5 @@
 envin
 Prac.ipynb
 .env
+data/*
+!data/.gitkeep
