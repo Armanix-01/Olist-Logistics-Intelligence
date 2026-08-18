@@ -1,0 +1,13 @@
+data:
+  raw: data/raw
+  cleaned: data/cleaned
+  processed: data/processed
+
+database:
+  schema: sql/schema.sql
+
+models:
+  directory: models/
+
+artifacts: 
+  directory: artifacts/

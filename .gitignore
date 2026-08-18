@@ -3,3 +3,4 @@ Prac.ipynb
 .env
 data/*
 !data/.gitkeep
+!data/__init__.py
