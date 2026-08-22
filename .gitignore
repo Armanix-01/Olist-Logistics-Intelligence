@@ -1,9 +1,12 @@
-envin
+envin/
 Prac.ipynb
 .env
-data/*
-!data/.gitkeep
-!data/__init__.py
+# Ignore everything inside these folders
+data/raw/*
+data/processed/*
+data/cleaned/*
+
+# Except .gitkeep
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/cleaned/.gitkeep
