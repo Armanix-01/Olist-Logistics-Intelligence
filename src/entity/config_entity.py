@@ -61,18 +61,21 @@ class ExtractionConfig:
 
     @classmethod
     def _validate(cls, config):
+        try:
 
-        if "data" not in config:
-            raise KeyError("Missing 'data' section")
+            if "data" not in config:
+                raise KeyError("Missing 'data' section")
 
-        if "raw" not in config["data"]:
-            raise KeyError("Missing 'data.raw'")
+            if "raw" not in config["data"]:
+                raise KeyError("Missing 'data.raw'")
 
-        if "files" not in config:
-            raise KeyError("Missing 'files' section")
+            if "files" not in config:
+                raise KeyError("Missing 'files' section")
 
-        for key in cls.REQUIRED_KEYS:
-            if key not in config["files"]:
-                raise KeyError(
-                    f"Missing 'files.{key}'"
-                )
+            for key in cls.REQUIRED_KEYS:
+                if key not in config["files"]:
+                    raise KeyError(
+                        f"Missing 'files.{key}'"
+                    )
+        except Exception as e:
+            raise CustomException(e, sys)
