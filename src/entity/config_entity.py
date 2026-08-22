@@ -8,6 +8,8 @@ from typing import ClassVar
 @dataclass(frozen=True)
 class ExtractionConfig:
 
+    
+
     raw_data_path: Path
     customers_data: Path
     geolocation_data: Path
@@ -34,13 +36,14 @@ class ExtractionConfig:
     @classmethod
     def from_config(cls):
         try:
+            logging.info("Initializing ExtractionConfig")
             config = Configuration().get_config()
             cls._validate(config)
 
             files = config["files"]
 
             raw = PROJECT_ROOT / config["data"]["raw"]
-
+            
             return cls(
                 raw_data_path=raw,
                 customers_data=raw / files["customers"],
@@ -59,11 +62,17 @@ class ExtractionConfig:
     @classmethod
     def _validate(cls, config):
 
+        if "data" not in config:
+            raise KeyError("Missing 'data' section")
+
+        if "raw" not in config["data"]:
+            raise KeyError("Missing 'data.raw'")
+
         if "files" not in config:
-            raise KeyError("Missing 'files' section in config.yaml")
+            raise KeyError("Missing 'files' section")
 
         for key in cls.REQUIRED_KEYS:
             if key not in config["files"]:
                 raise KeyError(
-                    f"Missing 'files.{key}' in config.yaml"
+                    f"Missing 'files.{key}'"
                 )

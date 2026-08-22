@@ -4,3 +4,6 @@ Prac.ipynb
 data/*
 !data/.gitkeep
 !data/__init__.py
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/cleaned/.gitkeep
