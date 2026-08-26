@@ -1,6 +1,7 @@
 from src.exception.exception import CustomException
 from src.logger.logger import logging
 import sys
+from src.entity.artifact_entity import ExtractionArtifact
 from src.config.paths import PROJECT_ROOT, Configuration
 from dataclasses import dataclass
 from pathlib import Path
@@ -9,7 +10,7 @@ from typing import ClassVar
 class ExtractionConfig:
 
     
-
+    
     raw_data_path: Path
     customers_data: Path
     geolocation_data: Path
@@ -34,17 +35,19 @@ class ExtractionConfig:
     ]
 
     @classmethod
-    def from_config(cls):
+    def from_config(cls, config: dict) -> "ExtractionConfig":
         try:
             logging.info("Initializing ExtractionConfig")
-            config = Configuration().get_config()
+            
             cls._validate(config)
 
             files = config["files"]
 
             raw = PROJECT_ROOT / config["data"]["raw"]
+            raw.mkdir(parents=True, exist_ok=True)
             
             return cls(
+                
                 raw_data_path=raw,
                 customers_data=raw / files["customers"],
                 geolocation_data=raw / files["geolocation"],
@@ -60,7 +63,7 @@ class ExtractionConfig:
             raise CustomException(e, sys)
 
     @classmethod
-    def _validate(cls, config):
+    def _validate(cls, config: dict) -> None:
         try:
 
             if "data" not in config:
@@ -79,3 +82,17 @@ class ExtractionConfig:
                     )
         except Exception as e:
             raise CustomException(e, sys)
+
+
+
+class ETLTransformConfig:
+    def __init__(self, dfs: ExtractionArtifact, config:dict):
+        try:
+            
+            self.data_frames= dfs
+            self.cleaned_data_path= PROJECT_ROOT / config["data"]["cleaned"]
+            self.cleaned_data_path.mkdir(parents=True, exist_ok=True)
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
