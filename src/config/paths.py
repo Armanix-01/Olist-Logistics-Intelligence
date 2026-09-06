@@ -10,5 +10,5 @@ class Configuration:
         with config_path.open() as f:
             self.config = yaml.safe_load(f)
 
-    def get_config(self):
+    def get_config(self) ->dict:
         return self.config
