@@ -10,3 +10,5 @@ data/cleaned/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/cleaned/.gitkeep
+
+logs
