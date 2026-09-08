@@ -1,14 +1,24 @@
+# Python
 envin/
-Prac.ipynb
+__pycache__/
+*.pyc
+
+# Environment
 .env
-# Ignore everything inside these folders
+
+# Ignore data
 data/raw/*
 data/processed/*
 data/cleaned/*
 
-# Except .gitkeep
+# Keep folders
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/cleaned/.gitkeep
 
-logs
+# Ignore logs
+logs/
+*.log
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
