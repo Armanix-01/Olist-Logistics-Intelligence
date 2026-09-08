@@ -1,5 +1,8 @@
 import sys
 
+
+
+
 import sys
 
 
@@ -9,19 +12,17 @@ class CustomException(Exception):
 
         _, _, exc_tb = sys.exc_info()
 
-        if exc_tb is not None:
-            self.line_no = exc_tb.tb_lineno
+        if exc_tb:
             self.file_name = exc_tb.tb_frame.f_code.co_filename
+            self.line_no = exc_tb.tb_lineno
         else:
-            self.line_no = None
-            self.file_name = None
+            self.file_name = "Unknown"
+            self.line_no = -1
 
     def __str__(self):
         return (
-            f"Error occurred in python script "
-            f"[{self.file_name}] "
-            f"at line [{self.line_no}] "
-            f"error message [{self.args[0]}]"
+            f"Error occurred in file '{self.file_name}', "
+            f"line {self.line_no}: {self.args[0]}"
         )
 
 ## checking if it is working or not:

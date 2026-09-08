@@ -7,3 +7,5 @@ scikit-learn
 sqlalchemy
 psycopg
 pyyaml
+python-dotenv
+psycopg2

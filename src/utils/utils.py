@@ -8,6 +8,6 @@ def load_csv(path:str):
 
 
 def save_df(path:str, df:DataFrame):
-    
+    logging.info(f"Saving DataFrame to: {path}")
     df.to_csv(path_or_buf=path)
     

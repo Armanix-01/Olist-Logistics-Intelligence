@@ -1,0 +1,31 @@
+08-09-2026 08-15-46 INFO [config_entity.py:45] Initializing ExtractionConfig
+08-09-2026 08-15-46 INFO [extract.py:21] Extraction initiated
+08-09-2026 08-15-46 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_customers_dataset.csv
+08-09-2026 08-15-46 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_geolocation_dataset.csv
+08-09-2026 08-15-46 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_order_items_dataset.csv
+08-09-2026 08-15-46 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_order_payments_dataset.csv
+08-09-2026 08-15-46 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_order_reviews_dataset.csv
+08-09-2026 08-15-47 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_orders_dataset.csv
+08-09-2026 08-15-47 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_products_dataset.csv
+08-09-2026 08-15-47 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\olist_sellers_dataset.csv
+08-09-2026 08-15-47 INFO [utils.py:6] csv file loading from C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\raw\product_category_name_translation.csv
+08-09-2026 08-15-47 INFO [transform.py:13] Initializing the ETL transformation
+08-09-2026 08-15-47 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_customers_dataset.csv
+08-09-2026 08-15-47 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_geolocation_dataset.csv
+08-09-2026 08-15-49 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_order_items_dataset.csv
+08-09-2026 08-15-49 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_order_payments_dataset.csv
+08-09-2026 08-15-49 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_order_reviews_dataset.csv
+08-09-2026 08-15-50 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_orders_dataset.csv
+08-09-2026 08-15-50 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_products_dataset.csv
+08-09-2026 08-15-50 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_sellers_dataset.csv
+08-09-2026 08-15-50 INFO [utils.py:11] Saving DataFrame to: C:\Users\User\Documents\ai_and_ml_with_gen_ai_proj\data\cleaned\cleaned_category_trans_dataset.csv
+08-09-2026 08-15-50 INFO [load.py:43] Loading table 'customers' (99441 rows)
+08-09-2026 08-15-52 INFO [load.py:43] Loading table 'sellers' (3095 rows)
+08-09-2026 08-15-52 INFO [load.py:43] Loading table 'geolocation' (1000163 rows)
+08-09-2026 08-16-07 INFO [load.py:43] Loading table 'category_name_translation' (71 rows)
+08-09-2026 08-16-07 INFO [load.py:43] Loading table 'products' (32951 rows)
+08-09-2026 08-16-08 INFO [load.py:43] Loading table 'orders' (99441 rows)
+08-09-2026 08-16-11 INFO [load.py:43] Loading table 'order_items' (112650 rows)
+08-09-2026 08-16-16 INFO [load.py:43] Loading table 'order_payments' (103886 rows)
+08-09-2026 08-16-18 INFO [load.py:43] Loading table 'order_reviews' (99224 rows)
+08-09-2026 08-16-21 INFO [load.py:52] Loaded table 'order_reviews' successfully

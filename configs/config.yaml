@@ -5,6 +5,10 @@ data:
 
 database:
   schema: sql/schema.sql
+  user: postgres
+  host: localhost
+  port: 5432
+  name: olist_brazil_db
 
 models:
   directory: models/

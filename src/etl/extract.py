@@ -5,18 +5,20 @@ from src.utils.utils import load_csv
 from src.logger.logger import logging
 from src.exception.exception import CustomException
 from src.entity.config_entity import ExtractionConfig
-logging.info("Extraction initiated")
+
 
 class DataExtractor:
     
-        def __init__(self):
+        def __init__(self,  config:dict):
             try:
-                self.config = ExtractionConfig.from_self.config()
+                
+                self.config = ExtractionConfig.from_config(config)
             except Exception as e:
                  raise CustomException(e, sys)
             
         def extract(self):
             try:
+                logging.info("Extraction initiated")
                 return ExtractionArtifact(
                     customers_df= load_csv(self.config.customers_data),
                     geolocation_df= load_csv(self.config.geolocation_data),
@@ -28,6 +30,7 @@ class DataExtractor:
                     sellers_df= load_csv(self.config.sellers_data),
                     category_trans_df= load_csv(self.config.category_translation_data)
                 )
+                
             except Exception as e:
                  raise CustomException(e, sys)
         

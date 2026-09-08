@@ -1,4 +1,15 @@
-CREATE TABLE customers(
+DROP TABLE IF EXISTS order_reviews CASCADE;
+DROP TABLE IF EXISTS order_payments CASCADE;
+DROP TABLE IF EXISTS order_items CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS products CASCADE;
+DROP TABLE IF EXISTS category_name_translation CASCADE;
+DROP TABLE IF EXISTS sellers CASCADE;
+DROP TABLE IF EXISTS customers CASCADE;
+DROP TABLE IF EXISTS geolocation CASCADE;
+
+
+CREATE TABLE IF NOT EXISTS customers(
 customer_id TEXT PRIMARY KEY,
 customer_unique_id TEXT,
 customer_zip_code_prefix INTEGER,
@@ -6,7 +17,19 @@ customer_city TEXT,
 customer_state CHAR(2)
 ); 
 
-CREATE TABLE geolocation (
+CREATE TABLE IF NOT EXISTS sellers (
+
+    seller_id TEXT PRIMARY KEY,
+
+    seller_zip_code_prefix INTEGER,
+
+    seller_city TEXT,
+
+    seller_state CHAR(2)
+
+);
+
+CREATE TABLE IF NOT EXISTS geolocation (
 
     geolocation_zip_code_prefix INTEGER,
 
@@ -19,7 +42,39 @@ CREATE TABLE geolocation (
     geolocation_state CHAR(2)
 
 );
-CREATE TABLE orders (
+
+CREATE TABLE IF NOT EXISTS category_name_translation (
+
+    product_category_name TEXT PRIMARY KEY,
+
+    product_category_name_english TEXT
+
+);
+
+CREATE TABLE IF NOT EXISTS products (
+
+    product_id TEXT PRIMARY KEY,
+
+    product_category_name TEXT,
+
+    product_name_length INTEGER,
+
+    product_description_length INTEGER,
+
+    product_photos_qty INTEGER,
+
+    product_weight_g INTEGER,
+
+    product_length_cm DOUBLE PRECISION,
+
+    product_height_cm DOUBLE PRECISION,
+
+    product_width_cm DOUBLE PRECISION
+
+
+);
+
+CREATE TABLE IF NOT EXISTS orders (
 
     order_id TEXT PRIMARY KEY,
 
@@ -42,7 +97,7 @@ CREATE TABLE orders (
         REFERENCES customers(customer_id)
 
 );
-CREATE TABLE order_items (
+CREATE TABLE IF NOT EXISTS order_items (
 
     order_id TEXT,
 
@@ -73,7 +128,7 @@ CREATE TABLE order_items (
         REFERENCES sellers(seller_id)
 
 );
-CREATE TABLE order_payments (
+CREATE TABLE IF NOT EXISTS order_payments (
 
     order_id TEXT,
 
@@ -92,9 +147,9 @@ CREATE TABLE order_payments (
         REFERENCES orders(order_id)
 
 );
-CREATE TABLE order_reviews (
+CREATE TABLE IF NOT EXISTS order_reviews (
 
-    review_id TEXT PRIMARY KEY,
+    review_id TEXT,
 
     order_id TEXT,
 
@@ -107,51 +162,10 @@ CREATE TABLE order_reviews (
     review_creation_date TIMESTAMP,
 
     review_answer_timestamp TIMESTAMP,
-
+    PRIMARY KEY (review_id, order_id),
     CONSTRAINT fk_reviews_order
         FOREIGN KEY (order_id)
         REFERENCES orders(order_id)
 
 );
-CREATE TABLE products (
 
-    product_id TEXT PRIMARY KEY,
-
-    product_category_name TEXT,
-
-    product_name_length INTEGER,
-
-    product_description_length INTEGER,
-
-    product_photos_qty INTEGER,
-
-    product_weight_g INTEGER,
-
-    product_length_cm DOUBLE PRECISION,
-
-    product_height_cm DOUBLE PRECISION,
-
-    product_width_cm DOUBLE PRECISION
-    CONSTRAINT fk_products_category
-    FOREIGN KEY (product_category_name)
-    REFERENCES category_name_translation(product_category_name)
-
-);
-CREATE TABLE sellers (
-
-    seller_id TEXT PRIMARY KEY,
-
-    seller_zip_code_prefix INTEGER,
-
-    seller_city TEXT,
-
-    seller_state CHAR(2)
-
-);
-CREATE TABLE category_name_translation (
-
-    product_category_name TEXT PRIMARY KEY,
-
-    product_category_name_english TEXT
-
-);

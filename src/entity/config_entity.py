@@ -1,11 +1,16 @@
 from src.exception.exception import CustomException
 from src.logger.logger import logging
 import sys
-from src.entity.artifact_entity import ExtractionArtifact
+import os
+from dotenv import load_dotenv
 from src.config.paths import PROJECT_ROOT, Configuration
 from dataclasses import dataclass
 from pathlib import Path
 from typing import ClassVar
+load_dotenv()
+
+
+
 @dataclass(frozen=True)
 class ExtractionConfig:
 
@@ -86,13 +91,23 @@ class ExtractionConfig:
 
 
 class ETLTransformConfig:
-    def __init__(self, dfs: ExtractionArtifact, config:dict):
+    def __init__(self,  config:dict):
         try:
             
-            self.data_frames= dfs
+            
             self.cleaned_data_path= PROJECT_ROOT / config["data"]["cleaned"]
             self.cleaned_data_path.mkdir(parents=True, exist_ok=True)
 
         except Exception as e:
             raise CustomException(e, sys)
 
+class ETLLoadConfig:
+
+    def __init__(self, config: dict):
+
+        self.db_user = config["database"]["user"]
+        self.db_password = os.getenv("DB_PASSWORD")
+        self.db_host = config["database"]["host"]
+        self.db_port = config["database"]["port"]
+        self.db_name = config["database"]["name"]
+        self.schema_path = PROJECT_ROOT / "src" / "sql" / "schema.sql"
