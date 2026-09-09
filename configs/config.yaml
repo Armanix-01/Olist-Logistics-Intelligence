@@ -10,11 +10,14 @@ database:
   port: 5432
   name: olist_brazil_db
 
-models:
-  directory: models/
+
 
 artifacts: 
-  directory: artifacts/
+  data: artifacts/data
+  metrics: artifacts/metrics
+  models: artifacts/models
+  preprocessor: artifacts/preprocessor
+
 
 files:
   customers: olist_customers_dataset.csv
