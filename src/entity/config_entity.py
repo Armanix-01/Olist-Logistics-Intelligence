@@ -114,17 +114,37 @@ class ETLLoadConfig:
 
 class DataIngestionConfig:
     
-    def __init__(self, config:dict, random_state:int=42, test_size:float=0.2 ):
+    def __init__(self, config:dict):
         self.db_user = config["database"]["user"]
         self.db_password = os.getenv("DB_PASSWORD")
         self.db_host = config["database"]["host"]
         self.db_port = config["database"]["port"]
         self.db_name = config["database"]["name"]
         self.sql_for_ing = PROJECT_ROOT / "src" / "sql" / "ingestion.sql"
-        self.random_state= random_state
-        self.test_size= test_size
-        self.train_dataset_path = PROJECT_ROOT / "artifacts" / "data" / "train.csv"
-        self.test_dataset_path = PROJECT_ROOT / "artifacts" / "data" / "test.csv"
-        self.train_dataset_path.parent.mkdir(parents=True, exist_ok=True)
-        self.processed_data_dir.mkdir(parents=True, exist_ok=True)
-        self.processed_data_dir = PROJECT_ROOT / "data" / "processed"
+        
+        
+
+
+class DataTransformationConfig:
+    def __init__(self, config: dict):
+
+        self.processed_dataset_dir = (
+            PROJECT_ROOT / config["data"]["processed"]
+        )
+
+        self.processed_dataset_dir.mkdir(
+            parents=True,
+            exist_ok=True
+        )
+
+
+class PreProcessingConfig:
+    def __init__(self, config:dict, random_state: 42, test_size: 0.2):
+        self.train_file_dir = PROJECT_ROOT / config["artifacts"]["data"] / "train"
+        self.test_file_dir = PROJECT_ROOT / config["artifacts"]["data"] / "test"
+        self.train_file_dir.mkdir(parents= True, exist_ok= True)
+        self.test_file_dir.mkdir(parents= True, exist_ok= True)
+        self.random_state = random_state
+        self.test_size = test_size
+        self.preprocessor_dir = PROJECT_ROOT / config["artifacts"]["preprocessor"]
+        self.preprocessor_dir.mkdir(parents= True, exist_ok= True)

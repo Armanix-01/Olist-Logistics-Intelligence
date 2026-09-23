@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from pandas import DataFrame
+import numpy as np
+import pandas as pd
 
 
 
@@ -49,3 +51,21 @@ class ETLTransformArtifact:
 @dataclass
 class ETLLoadArtifact:
     pass
+
+
+@dataclass
+class DataIngestionArtifact:
+    Ingested_df:DataFrame
+
+
+@dataclass
+class DataTransformationArtifact:
+    transformed_df:DataFrame
+
+
+@dataclass
+class PreProcessingArtifact:
+    x_train: pd.DataFrame | np.ndarray
+    y_train: pd.Series | np.ndarray
+    x_test: pd.DataFrame | np.ndarray
+    y_test: pd.Series | np.ndarray
