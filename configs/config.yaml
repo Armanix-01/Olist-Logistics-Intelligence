@@ -2,6 +2,7 @@ data:
   raw: data/raw
   cleaned: data/cleaned
   processed: data/processed
+  ingested: data/ingested
 
 database:
   schema: sql/schema.sql

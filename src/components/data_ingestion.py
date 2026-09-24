@@ -3,7 +3,7 @@ import pandas as pd
 
 from src.entity.config_entity import DataIngestionConfig
 from src.entity.artifact_entity import DataIngestionArtifact
-
+from src.utils.utils import load_csv, save_df
 from src.logger.logger import logging
 
 
@@ -50,16 +50,29 @@ class DataIngestion:
 
         return df
 
+    from pathlib import Path
+
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
 
         logging.info("Starting data ingestion")
 
         raw_df = self.fetch_data()
 
-        logging.info("Creating DataIngestionArtifact")
+        ingested_file_path = (
+            self.config.ingested_data_dir / "ingested.csv"
+        )
+
+        save_df(
+            path=ingested_file_path,
+            df=raw_df
+        )
+
+        logging.info(
+            f"Ingested dataframe saved to: {ingested_file_path}"
+        )
 
         artifact = DataIngestionArtifact(
-            Ingested_df=raw_df
+            ingested_data_file_path=str(ingested_file_path)
         )
 
         logging.info("Data ingestion completed successfully")

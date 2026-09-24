@@ -1,11 +1,11 @@
 import logging
-
+import pandas as pd
 from src.entity.config_entity import DataTransformationConfig
 from src.entity.artifact_entity import (
     DataIngestionArtifact,
     DataTransformationArtifact
 )
-from src.utils.utils import save_df
+from src.utils.utils import save_df, load_csv
 
 
 class DataTransformation:
@@ -15,12 +15,21 @@ class DataTransformation:
         config: dict,
         data_ingestion_artifact: DataIngestionArtifact
     ):
-        self.processed_dataset_path = DataTransformationConfig(config=config).processed_dataset_dir / "processed.csv"
-        self.ingested_df = data_ingestion_artifact.Ingested_df.copy()
+
+        self.config = DataTransformationConfig(config=config)
+
+        self.processed_dataset_path = (
+            self.config.processed_dataset_dir / "processed.csv"
+        )
+
+        self.ingested_df_path = (
+            data_ingestion_artifact.ingested_data_file_path
+        )
 
         logging.info(
-            "DataTransformation initialized. Input shape: %s",
-            self.ingested_df.shape
+            "DataTransformation initialized. "
+            "Input file: %s",
+            self.ingested_df_path
         )
 
     def feature_eng(self) -> DataTransformationArtifact:
@@ -28,7 +37,9 @@ class DataTransformation:
         logging.info("Starting data transformation and feature engineering.")
 
         try:
-            df = self.ingested_df.copy()
+            df = load_csv(
+                path=self.ingested_df_path
+            ).copy()
 
             logging.info(
                 "Initial dataframe shape: %s",
@@ -59,7 +70,17 @@ class DataTransformation:
                 )
 
             logging.info("Required columns validation successful.")
+            timestamp_cols = [
+                "order_purchase_timestamp",
+                "order_approved_at",
+                "order_estimated_delivery_date"
+            ]
 
+            for col in timestamp_cols:
+                df[col] = pd.to_datetime(
+                    df[col],
+                    errors="coerce"
+                )
             
             #  Remove unnecessary columns
             
@@ -324,7 +345,7 @@ class DataTransformation:
           
 
             artifact = DataTransformationArtifact(
-                transformed_df=df
+                transformed_data_file_path= str(self.processed_dataset_path)
             )
 
             logging.info(

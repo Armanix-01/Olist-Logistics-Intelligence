@@ -121,6 +121,7 @@ class DataIngestionConfig:
         self.db_port = config["database"]["port"]
         self.db_name = config["database"]["name"]
         self.sql_for_ing = PROJECT_ROOT / "src" / "sql" / "ingestion.sql"
+        self.ingested_data_dir = PROJECT_ROOT / config["data"]["ingested"]
         
         
 
@@ -148,3 +149,10 @@ class PreProcessingConfig:
         self.test_size = test_size
         self.preprocessor_dir = PROJECT_ROOT / config["artifacts"]["preprocessor"]
         self.preprocessor_dir.mkdir(parents= True, exist_ok= True)
+
+
+
+class ModelTrainerConfig:
+    def __init__(self, config:dict):
+        self.model_dir = PROJECT_ROOT / config["artifacts"]["models"]
+        self.model_yaml_file_path = PROJECT_ROOT / "configs" / "model.yaml"

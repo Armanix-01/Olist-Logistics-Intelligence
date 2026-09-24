@@ -55,17 +55,26 @@ class ETLLoadArtifact:
 
 @dataclass
 class DataIngestionArtifact:
-    Ingested_df:DataFrame
+    ingested_data_file_path: str
 
 
 @dataclass
 class DataTransformationArtifact:
-    transformed_df:DataFrame
+    transformed_data_file_path: str
 
 
 @dataclass
-class PreProcessingArtifact:
-    x_train: pd.DataFrame | np.ndarray
-    y_train: pd.Series | np.ndarray
-    x_test: pd.DataFrame | np.ndarray
-    y_test: pd.Series | np.ndarray
+class DataPreprocessingArtifact:
+    X_train_file_path: str
+    X_test_file_path: str
+    y_train_file_path: str
+    y_test_file_path: str
+    preprocessor_file_path: str
+
+
+@dataclass
+class ModelTrainerArtifact:
+    trained_model_file_path: str
+    model_name: str
+    model_score: float
+    final_model_file_path:str

@@ -1,20 +1,23 @@
-from src.logger.logger import logging
-from src.exception.exception import CustomException
-from src.entity.artifact_entity import (
-    DataTransformationArtifact,
-    PreProcessingArtifact
-)
-from src.entity.config_entity import PreProcessingConfig
+import logging
+import sys
 
-from sklearn.model_selection import train_test_split
+import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from src.utils.utils import save_artifact
-
-import sys
+from src.entity.artifact_entity import (
+    DataTransformationArtifact,
+    DataPreprocessingArtifact
+)
+from src.entity.config_entity import PreProcessingConfig
+from src.exception.exception import CustomException
+from src.utils.utils import (
+    save_artifact,
+    save_numpy_array_data
+)
 
 
 class PreProcessing:
@@ -24,30 +27,61 @@ class PreProcessing:
         config: dict,
         data_trans_artifact: DataTransformationArtifact
     ):
-        self.config = PreProcessingConfig(config=config)
-        self.transformed_df = data_trans_artifact.transformed_df
 
+        logging.info("Initializing Data Preprocessing")
+
+        self.config = PreProcessingConfig(config=config, test_size=0.2, random_state= 42)
+
+        self.transformed_data_file_path = (
+            data_trans_artifact.transformed_data_file_path
+        )
+
+        logging.info(
+            "Data preprocessing initialized. "
+            "Input file: %s",
+            self.transformed_data_file_path
+        )
+
+    
+    # TRAIN TEST SPLIT
     def train_and_test_split(self):
 
         try:
+
             logging.info("Starting train-test split")
 
-            df = self.transformed_df.copy()
-
-            logging.info(f"Input dataframe shape: {df.shape}")
-
-            x = df.drop(columns=["is_late"])
-            y = df["is_late"]
-
-            logging.info(f"Feature shape: {x.shape}")
-            logging.info(f"Target shape: {y.shape}")
+            # Load transformed dataframe
+            df = pd.read_csv(
+                self.transformed_data_file_path
+            ).copy()
 
             logging.info(
-                f"Target distribution:\n{y.value_counts(normalize=True)}"
+                "Input dataframe shape: %s",
+                df.shape
             )
 
-            x_train, x_test, y_train, y_test = train_test_split(
-                x,
+            # Separate features and target
+            X = df.drop(
+                columns=["is_late"]
+            )
+
+            y = df["is_late"]
+
+            logging.info(
+                "Feature shape: %s", X.shape
+            )
+
+            logging.info(
+                "Target shape: %s", y.shape
+            )
+
+            logging.info(
+                "Target distribution:\n%s", y.value_counts(normalize=True)
+            )
+
+            # Train-test split
+            X_train, X_test, y_train, y_test = train_test_split(
+                X,
                 y,
                 test_size=self.config.test_size,
                 random_state=self.config.random_state,
@@ -55,25 +89,51 @@ class PreProcessing:
             )
 
             logging.info(
-                f"Train shape: X={x_train.shape}, y={y_train.shape}"
+                "Train shape: X=%s, y=%s",X_train.shape,y_train.shape
             )
 
             logging.info(
-                f"Test shape: X={x_test.shape}, y={y_test.shape}"
+                "Test shape: X=%s, y=%s",
+                X_test.shape,
+                y_test.shape
             )
 
-            logging.info("Train-test split completed")
+            logging.info(
+                "Train-test split completed successfully"
+            )
 
-            return x_train, x_test, y_train, y_test
+            return (
+                X_train,
+                X_test,
+                y_train,
+                y_test
+            )
 
         except Exception as e:
-            logging.exception("Error occurred during train-test split")
-            raise CustomException(e, sys)
 
+            logging.exception(
+                "Error occurred during train-test split"
+            )
+
+            raise CustomException(
+                e,
+                sys
+            )
+
+    
+    # PREPROCESSOR
+    
     def preprocessor(self):
 
         try:
-            logging.info("Creating preprocessing pipeline")
+
+            logging.info(
+                "Creating preprocessing pipeline"
+            )
+
+            
+            # CATEGORICAL FEATURES
+            
 
             categorical_cols = [
                 "customer_state",
@@ -81,6 +141,10 @@ class PreProcessing:
                 "payment_type",
                 "product_category_name"
             ]
+
+           
+            # NUMERICAL FEATURES
+            
 
             numeric_cols = [
                 "number_of_items",
@@ -102,97 +166,263 @@ class PreProcessing:
             ]
 
             logging.info(
-                f"Number of numerical features: {len(numeric_cols)}"
+                "Number of numerical features: %d",
+                len(numeric_cols)
             )
 
             logging.info(
-                f"Number of categorical features: {len(categorical_cols)}"
+                "Number of categorical features: %d",
+                len(categorical_cols)
             )
 
-            categorical_pipeline = Pipeline([
-                (
-                    "imputer",
-                    SimpleImputer(
-                        strategy="constant",
-                        fill_value="unknown"
+           
+            # CATEGORICAL PIPELINE
+            
+
+            categorical_pipeline = Pipeline(
+                steps=[
+                    (
+                        "imputer",
+                        SimpleImputer(
+                            strategy="constant",
+                            fill_value="unknown"
+                        )
+                    ),
+                    (
+                        "encoder",
+                        OneHotEncoder(
+                            handle_unknown="ignore",
+                            sparse_output=False
+                        )
                     )
-                ),
-                (
-                    "encoder",
-                    OneHotEncoder(
-                        handle_unknown="ignore"
+                ]
+            )
+
+            
+            # NUMERICAL PIPELINE
+            
+
+            numeric_pipeline = Pipeline(
+                steps=[
+                    (
+                        "imputer",
+                        SimpleImputer(
+                            strategy="median"
+                        )
+                    ),
+                    (
+                        "scaler",
+                        StandardScaler()
                     )
-                )
-            ])
+                ]
+            )
 
-            numeric_pipeline = Pipeline([
-                (
-                    "imputer",
-                    SimpleImputer(strategy="median")
-                ),
-                (
-                    "scaler",
-                    StandardScaler()
-                )
-            ])
+            
+            # COLUMN TRANSFORMER
+            
 
-            preprocessor = ColumnTransformer([
-                (
-                    "num",
-                    numeric_pipeline,
-                    numeric_cols
-                ),
-                (
-                    "cat",
-                    categorical_pipeline,
-                    categorical_cols
-                )
-            ])
+            preprocessor = ColumnTransformer(
+                transformers=[
+                    (
+                        "num",
+                        numeric_pipeline,
+                        numeric_cols
+                    ),
+                    (
+                        "cat",
+                        categorical_pipeline,
+                        categorical_cols
+                    )
+                ]
+            )
 
-            logging.info("Preprocessing pipeline created successfully")
+            logging.info(
+                "Preprocessing pipeline created successfully"
+            )
 
             return preprocessor
 
         except Exception as e:
-            logging.exception(
-                "Error occurred while creating preprocessing pipeline"
-            )
-            raise CustomException(e, sys)
 
-    def preprocessing_training_data(self):
+            logging.exception(
+                "Error occurred while creating "
+                "preprocessing pipeline"
+            )
+
+            raise CustomException(
+                e,
+                sys
+            )
+
+    
+    # COMPLETE PREPROCESSING
+    
+
+    def preprocessing_training_data(
+        self
+    ) -> DataPreprocessingArtifact:
 
         try:
-            logging.info("Starting preprocessing of training and test data")
 
-            x_train, x_test, y_train, y_test = (
-                self.train_and_test_split()
+            logging.info(
+                "Starting complete data preprocessing"
             )
+
+            
+            # TRAIN TEST SPLIT
+            
+
+            ( X_train,
+                X_test,
+                y_train,
+                y_test) = self.train_and_test_split()
+
+            
+            #  CREATE PREPROCESSOR
+            
 
             preprocessor = self.preprocessor()
 
-            logging.info("Fitting preprocessor on training data")
-
-            # Fit ONLY on training data
-            x_train_transformed = preprocessor.fit_transform(x_train)
-
-            logging.info(
-                f"Transformed training shape: "
-                f"{x_train_transformed.shape}"
-            )
-
-            logging.info("Transforming test data")
-
-            # Only transform test data
-            x_test_transformed = preprocessor.transform(x_test)
+            
+            #  FIT ONLY ON TRAINING DATA
+           
 
             logging.info(
-                f"Transformed test shape: "
-                f"{x_test_transformed.shape}"
+                "Fitting preprocessor on training data"
             )
 
-            # Save fitted preprocessor
+            X_train_transformed = (
+                preprocessor.fit_transform(X_train)
+            )
+
+            logging.info(
+                "Transformed training shape: %s",
+                X_train_transformed.shape
+            )
+
+            
+            #  TRANSFORM TEST DATA
+            
+
+            logging.info(
+                "Transforming test data"
+            )
+
+            X_test_transformed = (
+                preprocessor.transform(X_test)
+            )
+
+            logging.info(
+                "Transformed test shape: %s",
+                X_test_transformed.shape
+            )
+
+            
+            #  CONVERT TARGET TO NUMPY
+            
+
+            y_train_array = y_train.to_numpy()
+
+            y_test_array = y_test.to_numpy()
+
+            
+            #  MAKE SURE X IS NUMPY
+            
+
+            X_train_array = (
+                X_train_transformed
+                if hasattr(X_train_transformed, "shape")
+                else X_train_transformed.toarray()
+            )
+
+            X_test_array = (
+                X_test_transformed
+                if hasattr(X_test_transformed, "shape")
+                else X_test_transformed.toarray()
+            )
+
+            
+            #  SAVE X TRAIN
+            
+
+            X_train_path = (
+                self.config.train_file_dir
+                / "x_train.npy"
+            )
+
+            save_numpy_array_data(
+                file_path=X_train_path,
+                array=X_train_array
+            )
+
+            logging.info(
+                "X_train saved to: %s",
+                X_train_path
+            )
+
+            
+            #  SAVE X TEST
+            
+
+            X_test_path = (
+                self.config.test_file_dir
+                / "x_test.npy"
+            )
+
+            save_numpy_array_data(
+                file_path=X_test_path,
+                array=X_test_array
+            )
+
+            logging.info(
+                "X_test saved to: %s",
+                X_test_path
+            )
+
+            
+            #  SAVE Y TRAIN
+           
+
+            y_train_path = (
+                self.config.train_file_dir
+                / "y_train.npy"
+            )
+
+            save_numpy_array_data(
+                file_path=y_train_path,
+                array=y_train_array
+            )
+
+            logging.info(
+                "y_train saved to: %s",
+                y_train_path
+            )
+
+            
+            #  SAVE Y TEST
+            
+
+            y_test_path = (
+                self.config.test_file_dir
+                / "y_test.npy"
+            )
+
+            save_numpy_array_data(
+                file_path=y_test_path,
+                array=y_test_array
+            )
+
+            logging.info(
+                "y_test saved to: %s",
+                y_test_path
+            )
+
+            
+            #  SAVE PREPROCESSOR
+            
             preprocessor_path = (
-                self.config.preprocessor_dir / "preprocessor.pkl"
+                self.config.preprocessor_dir
+                / "preprocessor.pkl"
             )
 
             save_artifact(
@@ -201,20 +431,39 @@ class PreProcessing:
             )
 
             logging.info(
-                f"Preprocessor saved at: {preprocessor_path}"
+                "Preprocessor saved to: %s",
+                preprocessor_path
+            )
+           
+            # CREATE ARTIFACT
+            
+            preprocessing_artifact = (
+                DataPreprocessingArtifact( 
+                    X_train_file_path=str( X_train_path),
+                    X_test_file_path=str(X_test_path),
+                    y_train_file_path=str(y_train_path),
+                    y_test_file_path=str(y_test_path),
+                    preprocessor_file_path=str(preprocessor_path)
+                )
             )
 
-            logging.info("Preprocessing completed successfully")
-
-            return PreProcessingArtifact(
-                x_train=x_train_transformed,
-                y_train=y_train,
-                x_test=x_test_transformed,
-                y_test=y_test
+            logging.info(
+                "DataPreprocessingArtifact created successfully"
             )
+
+            logging.info(
+                "Data preprocessing completed successfully"
+            )
+
+            return preprocessing_artifact
 
         except Exception as e:
+
             logging.exception(
                 "Error occurred during preprocessing"
             )
-            raise CustomException(e, sys)
+
+            raise CustomException(
+                e,
+                sys
+            )

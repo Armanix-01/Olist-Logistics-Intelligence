@@ -9,3 +9,4 @@ psycopg
 pyyaml
 python-dotenv
 psycopg2
+xgboost
