@@ -24,7 +24,7 @@ def save_artifact(artifact, path):
 
 def load_artifact(path):
     logging.info(f"Loading artifact from: {path}")
-    joblib.load(path)
+    return joblib.load(path)
 
 
 

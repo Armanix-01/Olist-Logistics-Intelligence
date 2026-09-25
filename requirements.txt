@@ -10,3 +10,8 @@ pyyaml
 python-dotenv
 psycopg2
 xgboost
+fastapi
+pydantic
+uvicorn
+requests
+streamlit
