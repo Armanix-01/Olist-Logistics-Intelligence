@@ -1,13 +1,8 @@
 
 from sqlalchemy import text
 import os
-from database.connection import CloudDb
-from dotenv import load_dotenv
+from database.connection import engine
 
-
-
-url = os.getenv("CLOUD_DB_URL")
-engine = CloudDb(url=url).engine
 # ============================================================
 # ORDER QUERIES
 # ============================================================
@@ -718,6 +713,5 @@ def get_late_delivery_statistics():
         row = result.mappings().first()
 
     return dict(row) if row else None
-
 
 

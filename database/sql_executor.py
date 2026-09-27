@@ -1,5 +1,5 @@
 from sqlalchemy import text
-from src.database.connection import engine
+from database.connection import engine
 
 
 def execute_readonly_sql(query: str):

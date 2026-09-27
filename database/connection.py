@@ -17,16 +17,14 @@ cloud_db_url = os.getenv("CLOUD_DB_URL")
 
 if not cloud_db_url:
     raise ValueError("CLOUD_DB_URL is not set in environment variables")
-
+engine = create_engine(url= cloud_db_url, pool_pre_ping= True)
 
 class CloudDb:
 
-    def __init__(self, url: str):
+    def __init__(self):
 
-        self.engine = create_engine(
-            url=url,
-            pool_pre_ping=True
-        )
+        self.engine = engine
+        
 
 
     def create_tables(self):
