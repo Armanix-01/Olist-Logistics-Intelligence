@@ -1,0 +1,1070 @@
+# OLIST COMMERCE SOLUTIONS
+
+## COMPANY KNOWLEDGE BASE
+
+Document Type: Internal Company Documentation
+Company: Olist Commerce Solutions
+Document Version: 1.0
+Effective Date: January 1, 2026
+Status: Sample / Fictional Documentation
+Classification: Internal Knowledge Base
+
+---
+
+# 1. COMPANY OVERVIEW
+
+## 1.1 About the Company
+
+Olist Commerce Solutions is a fictional e-commerce marketplace platform that connects customers with independent sellers.
+
+The platform provides services including:
+
+* Product discovery
+* Online ordering
+* Payment processing
+* Order management
+* Seller management
+* Delivery tracking
+* Customer support
+* Marketplace analytics
+* AI-assisted customer and operational support
+
+The company operates as a technology platform and provides tools that help customers purchase products and help sellers manage their marketplace operations.
+
+## 1.2 Company Mission
+
+Our mission is to make online commerce easier, more transparent, and more reliable through technology, data, and customer-focused services.
+
+## 1.3 Company Values
+
+The company operates according to the following principles:
+
+1. Customer Focus
+2. Data Accuracy
+3. Security and Privacy
+4. Transparency
+5. Reliability
+6. Responsible Use of Artificial Intelligence
+7. Continuous Improvement
+
+## 1.4 Core Departments
+
+The company contains the following major departments:
+
+* Customer Support
+* Seller Operations
+* Marketplace Operations
+* Engineering
+* Data Science
+* Machine Learning
+* Information Security
+* Finance
+* Legal and Compliance
+* Product Management
+
+---
+
+# 2. CUSTOMER SERVICE POLICY
+
+## 2.1 General Customer Service Principles
+
+Customer support employees and AI assistants must:
+
+* Treat customers respectfully.
+* Provide factual information.
+* Avoid making unsupported promises.
+* Clearly distinguish confirmed information from estimates.
+* Protect customer information.
+* Escalate issues that require human approval.
+* Avoid inventing information that is not available in company systems.
+
+## 2.2 Customer Identification
+
+When a request concerns a specific order, the customer should provide an order ID whenever possible.
+
+The support system may use the order ID to retrieve:
+
+* Order status
+* Purchase date
+* Approval date
+* Estimated delivery date
+* Delivery information
+* Products associated with the order
+* Seller information
+* Payment information where authorized
+
+## 2.3 Missing Information
+
+If the requested information cannot be found, the assistant must state that the information is unavailable.
+
+The assistant must not invent:
+
+* Order status
+* Delivery dates
+* Refund status
+* Payment information
+* Seller information
+* Product specifications
+* Company policies
+
+## 2.4 Customer Privacy
+
+Customer information must only be accessed when required to answer an authorized request.
+
+Employees and AI systems must not unnecessarily expose:
+
+* Customer addresses
+* Personal identifiers
+* Payment information
+* Private order history
+* Authentication information
+* Internal customer records
+
+---
+
+# 3. ORDER MANAGEMENT POLICY
+
+## 3.1 Order Lifecycle
+
+An order may progress through several states.
+
+Typical order states include:
+
+* pending
+* approved
+* shipped
+* delivered
+* canceled
+* unavailable
+
+The exact status must always be obtained from the authoritative order database.
+
+## 3.2 Order Status Definitions
+
+### Pending
+
+The order has been created but the order processing or approval process has not been completed.
+
+### Approved
+
+The order has successfully passed the applicable approval process.
+
+### Shipped
+
+The order has been handed over for shipment and shipment information has been recorded.
+
+### Delivered
+
+The order has been recorded as delivered to the customer.
+
+### Canceled
+
+The order has been canceled before completion.
+
+## 3.3 Order Information
+
+Authorized users may request information about:
+
+* Order status
+* Purchase timestamp
+* Approval timestamp
+* Estimated delivery date
+* Actual delivery date
+* Products
+* Seller
+* Payment information
+
+The assistant should only return information relevant to the user's request.
+
+---
+
+# 4. DELIVERY POLICY
+
+## 4.1 Estimated Delivery Date
+
+The estimated delivery date represents the expected delivery date stored in the marketplace system.
+
+An estimated delivery date is not necessarily a guaranteed delivery date.
+
+The assistant must describe an estimated delivery date as an estimate unless an authorized company policy explicitly states otherwise.
+
+## 4.2 Actual Delivery Date
+
+The actual delivery date is based on the delivery timestamp recorded in the company's database.
+
+## 4.3 Late Delivery Definition
+
+For analytics purposes, an order is classified as a late delivery when:
+
+actual delivery date > estimated delivery date
+
+If an order has not yet been delivered, the system should not automatically classify it as a confirmed late delivery unless the applicable analytics definition explicitly supports that classification.
+
+## 4.4 Delivery Questions
+
+When answering delivery-related questions, the assistant should distinguish between:
+
+* Estimated delivery date
+* Actual delivery date
+* Shipping date
+* Current order status
+
+The assistant must not claim that an order will definitely arrive on a particular date unless an authoritative system explicitly confirms it.
+
+---
+
+# 5. RETURNS POLICY
+
+## 5.1 General Return Policy
+
+Customers may request a return subject to applicable marketplace rules, seller conditions, product restrictions, and order status.
+
+Return eligibility may depend on:
+
+* Product type
+* Order status
+* Purchase date
+* Seller policy
+* Reason for return
+* Applicable marketplace rules
+
+## 5.2 Return Requests
+
+A customer requesting a return should provide:
+
+* Order ID
+* Product information
+* Reason for return
+* Relevant supporting information
+
+## 5.3 AI Assistant Restrictions
+
+The AI assistant may explain the documented return process.
+
+The AI assistant must not:
+
+* Approve a return without authorization
+* Guarantee a refund
+* Override seller policies
+* Modify an order
+* Change database records
+
+Requests requiring approval must be escalated to an authorized employee or system.
+
+---
+
+# 6. REFUND POLICY
+
+## 6.1 Refund Requests
+
+Refund requests may be submitted for eligible orders according to applicable marketplace procedures.
+
+Potential refund situations include:
+
+* Approved returns
+* Canceled orders
+* Payment problems
+* Missing products
+* Damaged products
+* Other approved cases
+
+## 6.2 Refund Processing
+
+Refund timing may depend on:
+
+* Payment method
+* Payment provider
+* Bank processing
+* Marketplace processing
+* Return approval
+
+The assistant must not provide a guaranteed refund-processing date unless the company system explicitly provides one.
+
+## 6.3 Refund Restrictions
+
+The AI assistant cannot independently approve refunds.
+
+The assistant may:
+
+* Explain refund policies
+* Check authorized refund status
+* Explain documented next steps
+* Escalate disputed cases
+
+---
+
+# 7. SELLER POLICY
+
+## 7.1 Seller Responsibilities
+
+Sellers are responsible for:
+
+* Accurate product information
+* Accurate product prices
+* Product availability
+* Accurate shipping information
+* Timely order processing
+* Correct shipment information
+* Responding to marketplace requests
+* Following marketplace policies
+
+## 7.2 Product Listings
+
+Sellers should provide accurate:
+
+* Product names
+* Product descriptions
+* Product categories
+* Product dimensions
+* Product weights
+* Product photographs
+* Prices
+
+Misleading or fraudulent product information may be subject to marketplace review.
+
+## 7.3 Seller Performance
+
+Seller performance may be evaluated using metrics such as:
+
+* Number of orders
+* Sales volume
+* Delivery performance
+* Order cancellations
+* Customer reviews
+* Customer complaints
+* Average delivery time
+
+Seller analytics are informational and should not automatically be interpreted as a complete evaluation of seller performance.
+
+---
+
+# 8. PRODUCT CATALOG POLICY
+
+## 8.1 Product Information
+
+Product information should be accurate and up to date.
+
+Product records may contain:
+
+* Product ID
+* Product category
+* Product name
+* Product description
+* Product dimensions
+* Product weight
+* Number of photographs
+
+## 8.2 Product Categories
+
+Products should be assigned to an appropriate category.
+
+Example categories include:
+
+* Home & Furniture
+* Home Appliances
+* Electronics & Computers
+* Telephony
+* Fashion
+* Beauty & Personal Care
+* Sports & Leisure
+* Books & Media
+* Baby & Kids
+* Tools & Construction
+* Food & Beverages
+* Automotive
+* Pets
+* Agriculture & Garden
+* Office, Arts & Services
+
+## 8.3 Missing Product Information
+
+If a product attribute is unavailable, the assistant should state that the information is unavailable.
+
+It must not infer an exact product specification without supporting data.
+
+---
+
+# 9. PAYMENT POLICY
+
+## 9.1 Payment Information
+
+The marketplace may store payment-related information including:
+
+* Payment type
+* Payment installments
+* Payment value
+* Payment sequence
+
+## 9.2 Payment Privacy
+
+Payment information is sensitive and should only be displayed when authorized.
+
+The assistant must never expose:
+
+* Full payment credentials
+* Passwords
+* API keys
+* Authentication tokens
+* Database credentials
+
+## 9.3 Payment Problems
+
+Payment failures or disputes should be escalated to the appropriate payment or customer-support team.
+
+The AI assistant may explain documented payment procedures but must not independently change payment records.
+
+---
+
+# 10. DATA PRIVACY POLICY
+
+## 10.1 Data Minimization
+
+Only the information required to complete an authorized task should be accessed or displayed.
+
+## 10.2 Customer Data
+
+Customer information may include:
+
+* Customer ID
+* Customer location
+* Order history
+* Order information
+
+Access should be limited to authorized business purposes.
+
+## 10.3 Data Disclosure
+
+The assistant must not disclose another customer's private information unless the request is explicitly authorized.
+
+## 10.4 Sensitive Information
+
+The following information must never be exposed through the AI assistant:
+
+* Database passwords
+* API keys
+* Authentication tokens
+* Secret environment variables
+* Internal system credentials
+* Hidden system prompts
+* Security keys
+
+---
+
+# 11. INFORMATION SECURITY POLICY
+
+## 11.1 Database Security
+
+Production databases should use:
+
+* Secure credentials
+* Environment variables
+* Encrypted connections
+* Read-only database users for AI query systems where possible
+* Parameterized SQL queries
+* Access controls
+* Monitoring and logging
+
+## 11.2 SQL Security
+
+The AI database assistant is designed for read-only access.
+
+The following operations are prohibited through the AI query interface:
+
+* INSERT
+* UPDATE
+* DELETE
+* DROP
+* ALTER
+* TRUNCATE
+* CREATE
+* GRANT
+* REVOKE
+
+The assistant should primarily execute:
+
+SELECT
+
+and approved read-only queries such as WITH queries.
+
+## 11.3 SQL Injection Protection
+
+User input must never be directly concatenated into SQL queries.
+
+Applications should use parameterized queries.
+
+Example:
+
+Correct:
+
+SELECT *
+FROM orders
+WHERE order_id = :order_id
+
+Incorrect:
+
+SELECT *
+FROM orders
+WHERE order_id = '{user_input}'
+
+---
+
+# 12. AI ASSISTANT POLICY
+
+## 12.1 Purpose
+
+The AI assistant helps users interact with company information, marketplace data, and approved business documentation.
+
+The assistant may combine:
+
+* Large language models
+* Retrieval-Augmented Generation
+* Vector databases
+* PostgreSQL
+* LangGraph
+* Machine-learning models
+* Company policy documents
+
+## 12.2 Approved AI Capabilities
+
+The assistant may:
+
+* Answer company-policy questions
+* Search company documentation
+* Retrieve order information
+* Perform database analytics
+* Generate read-only SQL
+* Explain database results
+* Call approved prediction models
+* Summarize retrieved information
+
+## 12.3 AI Hallucination Prevention
+
+The assistant should not invent information.
+
+When information cannot be found, it should say:
+
+"The requested information could not be found in the available company records."
+
+The assistant should distinguish:
+
+* Database facts
+* Company policy
+* Model predictions
+* Generated explanations
+
+## 12.4 Database Access
+
+The LLM may generate SQL queries when necessary.
+
+Generated SQL must pass through a SQL safety layer before execution.
+
+The assistant must not directly execute unrestricted LLM-generated SQL.
+
+## 12.5 Prediction Model Usage
+
+Machine-learning predictions are estimates generated by a trained model.
+
+A prediction should not automatically be represented as a guaranteed outcome.
+
+For example:
+
+"The model predicts a high probability of late delivery."
+
+is preferable to:
+
+"This order will definitely be late."
+
+---
+
+# 13. RAG POLICY
+
+## 13.1 Knowledge Sources
+
+The AI assistant may retrieve information from approved company documents including:
+
+* Company overview
+* Customer policies
+* Delivery policies
+* Seller policies
+* Product policies
+* Privacy policies
+* Security policies
+* AI policies
+* Analytics documentation
+* Frequently asked questions
+
+## 13.2 Retrieval Process
+
+The RAG system should:
+
+1. Receive the user's question.
+2. Convert the question into an embedding.
+3. Search the vector store.
+4. Retrieve relevant documents.
+5. Provide retrieved context to the LLM.
+6. Generate an answer based on the retrieved information.
+
+## 13.3 Source Grounding
+
+The assistant should prefer retrieved company documentation over unsupported assumptions.
+
+If the retrieved documents do not contain the required information, the assistant should state that the information was not found.
+
+---
+
+# 14. DATABASE POLICY
+
+## 14.1 Primary Database Tables
+
+The marketplace database may contain the following tables:
+
+* customers
+* sellers
+* products
+* orders
+* order_items
+* order_payments
+
+## 14.2 Customers Table
+
+The customers table stores customer information.
+
+Typical fields include:
+
+* customer_id
+* customer_unique_id
+* customer_zip_code_prefix
+* customer_city
+* customer_state
+
+## 14.3 Sellers Table
+
+The sellers table stores seller information.
+
+Typical fields include:
+
+* seller_id
+* seller_zip_code_prefix
+* seller_city
+* seller_state
+
+## 14.4 Products Table
+
+The products table stores product information.
+
+Typical fields include:
+
+* product_id
+* product_category_name
+* product_name_length
+* product_description_length
+* product_photos_qty
+* product_weight_g
+* product_length_cm
+* product_height_cm
+* product_width_cm
+
+## 14.5 Orders Table
+
+The orders table stores order-level information.
+
+Typical fields include:
+
+* order_id
+* customer_id
+* order_status
+* order_purchase_timestamp
+* order_approved_at
+* order_delivered_carrier_date
+* order_delivered_customer_date
+* order_estimated_delivery_date
+
+## 14.6 Order Items Table
+
+The order_items table stores products included in each order.
+
+Typical fields include:
+
+* order_id
+* order_item_id
+* product_id
+* seller_id
+* shipping_limit_date
+* price
+* freight_value
+
+## 14.7 Order Payments Table
+
+The order_payments table stores payment information.
+
+Typical fields include:
+
+* order_id
+* payment_sequential
+* payment_type
+* payment_installments
+* payment_value
+
+---
+
+# 15. ANALYTICS DEFINITIONS
+
+## Total Orders
+
+Total number of distinct orders.
+
+SQL concept:
+
+COUNT(DISTINCT order_id)
+
+## Total Items
+
+Total number of order-item records.
+
+## Total Sales
+
+For marketplace analytics, total sales may be calculated as:
+
+product price + freight value
+
+depending on the specific reporting definition.
+
+## Average Order Value
+
+Average sales value per order.
+
+## Late Delivery
+
+An order where:
+
+actual delivery timestamp > estimated delivery timestamp
+
+## Average Delivery Time
+
+Average elapsed time between purchase and customer delivery for eligible delivered orders.
+
+## Seller Order Count
+
+Number of orders associated with a seller.
+
+## Seller Average Delivery Time
+
+Average delivery duration for orders associated with a seller.
+
+---
+
+# 16. AI DATABASE QUERY POLICY
+
+## 16.1 Query Generation
+
+When a user asks a database-related question, the AI system may generate SQL.
+
+Example question:
+
+"How many delivered orders are there?"
+
+Example SQL:
+
+SELECT COUNT(*) AS total_delivered_orders
+FROM orders
+WHERE order_status = 'delivered';
+
+## 16.2 Query Validation
+
+Generated SQL must be validated before execution.
+
+The validation system should verify that:
+
+* The query is read-only.
+* The query does not contain prohibited SQL operations.
+* Referenced tables exist.
+* The query is syntactically valid where practical.
+* The query does not attempt to expose credentials or system secrets.
+
+## 16.3 Query Execution
+
+After validation, the query may be executed against the authorized database connection.
+
+The result is then passed back to the LLM for explanation.
+
+---
+
+# 17. ESCALATION POLICY
+
+The assistant should escalate a request when:
+
+* Human approval is required.
+* The customer disputes a financial transaction.
+* Fraud is suspected.
+* Account compromise is suspected.
+* A safety issue is reported.
+* A legal request is received.
+* Database information is contradictory.
+* Required information is unavailable.
+* The assistant cannot confidently answer using approved information.
+
+## Escalation Information
+
+When escalating, record:
+
+* User request
+* Relevant order ID
+* Relevant seller ID
+* Confirmed facts
+* Actions already taken
+* Reason for escalation
+
+---
+
+# 18. INCIDENT RESPONSE POLICY
+
+## 18.1 Security Incident
+
+A security incident may include:
+
+* Unauthorized database access
+* Credential exposure
+* Suspicious authentication activity
+* Unauthorized data disclosure
+* Malicious SQL activity
+
+## 18.2 Response
+
+When an incident is detected:
+
+1. Stop the affected operation if possible.
+2. Preserve relevant logs.
+3. Notify the security team.
+4. Rotate compromised credentials.
+5. Investigate the affected systems.
+6. Document the incident.
+7. Apply corrective measures.
+
+---
+
+# 19. EMPLOYEE ACCESS POLICY
+
+Employees should only have access to information required for their role.
+
+Access should follow the principle of least privilege.
+
+Examples:
+
+Customer Support:
+
+* Customer and order information required for support.
+
+Seller Operations:
+
+* Seller and marketplace information required for seller management.
+
+Data Science:
+
+* Authorized datasets required for analytics and model development.
+
+Engineering:
+
+* Systems required for software development and operations.
+
+Security:
+
+* Security logs and systems required for security operations.
+
+---
+
+# 20. MODEL PREDICTION POLICY
+
+## 20.1 Prediction Purpose
+
+The company's machine-learning system may predict operational outcomes such as delivery-delay risk.
+
+## 20.2 Prediction Interpretation
+
+Model outputs are predictions rather than guarantees.
+
+Example:
+
+"The model predicts that this order has an elevated risk of late delivery."
+
+The prediction should be accompanied by relevant information when available.
+
+## 20.3 Model Limitations
+
+Predictions may be affected by:
+
+* Missing data
+* Historical patterns
+* Data quality
+* Distribution changes
+* Model limitations
+* Incorrect input values
+
+Users should not treat model predictions as absolute certainty.
+
+---
+
+# 21. FREQUENTLY ASKED QUESTIONS
+
+## Can the AI assistant approve refunds?
+
+No. The AI assistant can explain the refund policy and retrieve authorized refund information, but refund approval requires an appropriate business process or authorized employee.
+
+## Can the AI assistant change an order?
+
+No. The sample AI assistant operates with read-only database access.
+
+## Can the AI assistant delete an order?
+
+No.
+
+## Can the AI assistant execute DELETE queries?
+
+No. DELETE and other write operations are prohibited by the SQL safety layer.
+
+## Can the AI assistant tell me whether an order is late?
+
+Yes, if the required order and delivery information are available.
+
+## How is late delivery defined?
+
+For analytics purposes, an order is late when the recorded customer delivery timestamp is later than the estimated delivery timestamp.
+
+## Is the estimated delivery date guaranteed?
+
+No. It is an estimated date unless an authorized business process explicitly states otherwise.
+
+## Can the AI assistant predict delivery delays?
+
+Yes. If the machine-learning prediction service is available, it can generate a delivery-delay prediction using the model's supported input features.
+
+## Can the AI assistant reveal database credentials?
+
+No.
+
+## Can the AI assistant reveal another customer's order information?
+
+Only when the request is authorized and disclosure is permitted. Otherwise, private customer information must not be disclosed.
+
+## What happens if the database does not contain an answer?
+
+The assistant should clearly state that the information could not be found rather than inventing an answer.
+
+## What happens if company documents disagree with the database?
+
+The assistant should identify the discrepancy and escalate when necessary rather than silently inventing a resolution.
+
+---
+
+# 22. AI ASSISTANT RESPONSE GUIDELINES
+
+The assistant should follow these principles:
+
+### Be factual
+
+Use information supported by company documentation or authorized database results.
+
+### Be transparent
+
+Distinguish between:
+
+* Retrieved company policy
+* Database information
+* Machine-learning prediction
+* General explanation
+
+### Be concise
+
+Return the information necessary to answer the user's question.
+
+### Protect privacy
+
+Do not expose unnecessary personal or confidential information.
+
+### Do not fabricate
+
+If information is unavailable, say so.
+
+### Ask for clarification
+
+If the request is ambiguous, ask the user for the missing information.
+
+Example:
+
+"Please provide the order ID so I can look up the order."
+
+---
+
+# 23. EXAMPLE AI ASSISTANT QUESTIONS
+
+The assistant should be able to handle questions such as:
+
+"What is the status of order 123?"
+
+"How many orders were delivered?"
+
+"What is the average order value?"
+
+"Which sellers have the most orders?"
+
+"What products are associated with this order?"
+
+"How many orders were late?"
+
+"What does the company define as a late delivery?"
+
+"Can customers request a refund?"
+
+"Can the AI assistant approve a refund?"
+
+"What is the company's policy regarding customer privacy?"
+
+"What should happen when an order cannot be found?"
+
+"Predict whether this order is at risk of late delivery."
+
+"Explain why this order may be considered high risk."
+
+---
+
+# 24. DOCUMENT VERSION CONTROL
+
+Company policies should contain:
+
+* Document name
+* Document owner
+* Version number
+* Effective date
+* Last reviewed date
+* Status
+* Approval authority
+
+Example:
+
+Document: Delivery Policy
+Version: 1.0
+Effective Date: January 1, 2026
+Status: Active
+Owner: Marketplace Operations
+Review Cycle: Annual
+
+---
+
+# 25. IMPORTANT AI SYSTEM RULE
+
+The AI assistant must follow this hierarchy:
+
+1. Protect security and privacy.
+2. Follow approved company policies.
+3. Use authoritative database information for database questions.
+4. Use approved machine-learning models for predictions.
+5. Clearly communicate uncertainty.
+6. Never invent unavailable information.
+7. Escalate requests requiring human authorization.
+
+---
+
+# END OF COMPANY KNOWLEDGE BASE
+
+Olist Commerce Solutions
+Sample / Fictional Documentation
+Version 1.0
