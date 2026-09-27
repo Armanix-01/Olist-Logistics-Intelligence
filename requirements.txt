@@ -15,3 +15,6 @@ pydantic
 uvicorn
 requests
 streamlit
+langchain
+langgraph
+pypdf
