@@ -14,14 +14,3 @@ vectorstore = create_vector_store(chunks=chunks, embedder=embedder)
 retriever = vectorstore.as_retriever(
     search_kwargs={"k": 4}
 )
-
-
-
-results = retriever.invoke(
-    "What is the company's leave policy?"
-)
-
-for doc in results:
-    print(doc.page_content)
-    print(doc.metadata)
-    print("----------")
