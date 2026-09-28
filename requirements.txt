@@ -18,3 +18,7 @@ streamlit
 langchain
 langgraph
 pypdf
+langchain-community
+langchain-openai
+langchain-qdrant
+qdrant-client
