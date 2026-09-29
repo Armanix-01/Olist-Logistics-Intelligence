@@ -9,7 +9,7 @@ psycopg
 pyyaml
 python-dotenv
 psycopg2
-xgboost
+xgboost==3.3.0
 fastapi
 pydantic
 uvicorn
