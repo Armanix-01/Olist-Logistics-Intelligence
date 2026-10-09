@@ -61,7 +61,7 @@ def orchestrator(state: AgentState) -> dict:
     }
 
 
-
+## route task conditional edge
 def route_tasks(state: AgentState):
 
     ready_tasks = state.get("ready_tasks", [])
@@ -90,7 +90,7 @@ def route_tasks(state: AgentState):
 
             sends.append(
                 Send(
-                    "query_agent",
+                    "query_worker",
                     task_state
                 )
             )
@@ -99,7 +99,7 @@ def route_tasks(state: AgentState):
 
             sends.append(
                 Send(
-                    "prediction_agent",
+                    "prediction_worker",
                     task_state
                 )
             )
@@ -108,7 +108,7 @@ def route_tasks(state: AgentState):
 
             sends.append(
                 Send(
-                    "retriever_agent",
+                    "retriever_worker",
                     task_state
                 )
             )

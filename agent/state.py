@@ -20,6 +20,7 @@ class AgentState(TypedDict, total=False):
         dict[str, str],
         lambda old, new: {**old, **new}
     ]
+    answer:str
 
 from typing import TypedDict, Annotated
 
