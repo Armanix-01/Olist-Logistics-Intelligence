@@ -22,3 +22,5 @@ langchain-community
 langchain-openai
 langchain-qdrant
 qdrant-client
+langchain-tavily
+sqlglot

@@ -1,23 +1,42 @@
+from functools import lru_cache
+import joblib
+
 from database.prediction.prediction_query import get_prediction_data
 from database.prediction.prediction_features import create_prediction_features
 from database.connection import PROJECT_ROOT
-import joblib
-model_path = PROJECT_ROOT / "artifacts" / "models" / "final_model.pkl"
-model = joblib.load(model_path)
+
+
+MODEL_PATH = (
+    PROJECT_ROOT
+    / "artifacts"
+    / "models"
+    / "final_model.pkl"
+)
+
+
+@lru_cache(maxsize=1)
+def get_model():
+    return joblib.load(MODEL_PATH)
+
+
 def prediction(order_id: str):
 
-    query_res = get_prediction_data(order_id=order_id)
-   
+    query_res = get_prediction_data(
+        order_id=order_id
+    )
+
     if query_res is None:
         raise ValueError(
             f"Order {order_id} was not found in the database."
         )
 
     df = create_prediction_features(query_res)
-     
-    res = model.predict(df)
- 
-    return res
+
+    model = get_model()
+
+    result = model.predict(df)
+
+    return result
 
 
 # from database.prediction.prediction_query import get_prediction_data
