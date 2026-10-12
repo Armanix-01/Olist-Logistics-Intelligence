@@ -33,12 +33,25 @@ The project demonstrates an applied AI workflow covering data preparation, model
 
 Add sanitized screenshots to `docs/images/` and update/uncomment the corresponding image references below. Do not include API keys, database credentials, private user data, or secret-bearing logs in screenshots.
 
-<!--
-![agent workflow structure](docs/images/graph.png)
+
+## Application Screenshots
+
+### Agent Workflow Structure
+
+![Agent workflow structure](docs/images/graph.png)
+
+### Delivery Prediction Interface
+
 ![Delivery prediction UI](docs/images/delivery-prediction.png)
+
+### Prediction Explanation with SHAP and LLM
+
 ![Prediction with SHAP and LLM explanation](docs/images/prediction-explanation.png)
+
+### Olist AI Chatbot
+
 ![Olist AI chatbot](docs/images/ai-chatbot.png)
--->
+
 
 ## System architecture
 
