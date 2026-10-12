@@ -34,10 +34,10 @@ The project demonstrates an applied AI workflow covering data preparation, model
 Add sanitized screenshots to `docs/images/` and update/uncomment the corresponding image references below. Do not include API keys, database credentials, private user data, or secret-bearing logs in screenshots.
 
 <!--
+![agent workflow structure](docs/images/agent.png)
 ![Delivery prediction UI](docs/images/delivery-prediction.png)
 ![Prediction with SHAP and LLM explanation](docs/images/prediction-explanation.png)
 ![Olist AI chatbot](docs/images/ai-chatbot.png)
-![FastAPI interactive documentation](docs/images/api-docs.png)
 -->
 
 ## System architecture
