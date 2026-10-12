@@ -25,3 +25,4 @@ qdrant-client
 langchain-tavily
 sqlglot
 langsmith
+shap

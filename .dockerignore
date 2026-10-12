@@ -1,0 +1,30 @@
+# Python virtual environments
+envin/
+.venv/
+venv/
+
+# Git and editor files
+.git/
+.vscode/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+.env.*
+
+# Notebooks and unnecessary local files
+.ipynb_checkpoints/
+notebooks/
+
+# Large raw/intermediate datasets
+data/raw/
+data/cleaned/
+data/ingested/
+data/processed/
+
+# Local logs
+logs/
+*.log

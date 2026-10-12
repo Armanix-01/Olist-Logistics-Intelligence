@@ -32,7 +32,7 @@ class TaskState(TypedDict, total=False):
 
     task_id: str
 
-    question: str
+    task_question: str
 
     agent: str
 

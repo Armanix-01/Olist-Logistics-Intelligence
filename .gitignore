@@ -10,11 +10,13 @@ __pycache__/
 data/raw/*
 data/processed/*
 data/cleaned/*
+data/ingested/*
 
 # Keep folders
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 !data/cleaned/.gitkeep
+!data/ingested/.gitkeep
 
 # Ignore logs
 logs/
@@ -22,3 +24,7 @@ logs/
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
+
+
+# Notebooks
+notebooks/

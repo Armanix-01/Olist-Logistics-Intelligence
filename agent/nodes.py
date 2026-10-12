@@ -78,7 +78,7 @@ def route_tasks(state: AgentState):
 
         task_state = {
             "task_id": task.id,
-            "question": task.question,
+            "task_question": task.question,
             "agent": task.agent,
             "depends_on": task.depends_on,
             "context": dependency_results,
@@ -134,7 +134,7 @@ def query_agent(state: TaskState) -> dict:
                 "role": "user",
                 "content": f"""
 Task:
-{state["question"]}
+{state["task_question"]}
 
 Information from dependent tasks:
 {state.get("context", {})}
@@ -174,7 +174,7 @@ def prediction_agent(state: TaskState) -> dict:
                 "role": "user",
                 "content": f"""
 Task:
-{state["question"]}
+{state["task_question"]}
 
 Information from dependent tasks:
 {state.get("context", {})}
@@ -214,7 +214,7 @@ def retriever_agent(state: TaskState) -> dict:
                 "role": "user",
                 "content": f"""
 Task:
-{state["question"]}
+{state["task_question"]}
 
 Information from dependent tasks:
 {state.get("context", {})}

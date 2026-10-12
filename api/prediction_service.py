@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 
-from api.config import MODEL_PATH
+from api.config import FINAL_MODEL_PATH
 from api.exceptions import PredictionException
 from api.logger import logger
 
@@ -13,10 +13,10 @@ class PredictionService:
         try:
             logger.info(
                 "Loading model from: %s",
-                MODEL_PATH
+                FINAL_MODEL_PATH
             )
 
-            self.model = joblib.load(MODEL_PATH)
+            self.model = joblib.load(FINAL_MODEL_PATH)
 
             logger.info("Model loaded successfully")
 

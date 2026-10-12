@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from typing import Literal
 
 
 class PredictionRequest(BaseModel):
@@ -35,3 +36,37 @@ class PredictionResponse(BaseModel):
 
     is_late: int
     late_probability: float
+
+
+
+
+class AgentRequest(BaseModel):
+    question: str = Field(
+        ...,
+        min_length=3,
+        max_length=2000,
+        description="Question to ask the Olist AI assistant."
+    )
+
+
+class AgentResponse(BaseModel):
+    answer: str
+
+
+
+class FeatureExplanation(BaseModel):
+    feature: str
+    shap_value: float
+    direction: Literal[
+        "increases_late_probability",
+        "decreases_late_probability",
+        "no_effect",
+    ]
+
+
+class PredictionResponse(BaseModel):
+    is_late: int
+    late_probability: float
+    shap_baseline_probability: float
+    explanation: list[FeatureExplanation]
+    llm_explanation: str
