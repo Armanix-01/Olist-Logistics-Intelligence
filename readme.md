@@ -46,8 +46,7 @@ Add sanitized screenshots to `docs/images/` and update/uncomment the correspondi
 
 ### Prediction Explanation with SHAP and LLM
 
-![Prediction with SHAP and LLM explanation](docs/images/prediction-explanation.png)
-
+![Prediction explanation with SHAP and LLM](docs/images/shap-llm.png)
 ### Olist AI Chatbot
 
 ![Olist AI chatbot](docs/images/ai-chatbot.png)
@@ -109,9 +108,6 @@ flowchart TD
     FINAL --> END([Response to Streamlit])
 ```
 
-**Space for the actual agent graph image:** export a screenshot from your LangGraph graph visualization or create a clean workflow image, save it as `docs/images/agent-workflow.png`, then uncomment the line below. Ensure the image reflects the current graph rather than an earlier version.
-
-<!-- ![LangGraph agent workflow](docs/images/agent-workflow.png) -->
 
 ### Agent responsibilities
 
@@ -157,6 +153,70 @@ These scores describe the recorded evaluation run and do not guarantee future pe
 | LLM | OpenAI API through the configured LangChain integration |
 | Data stores | PostgreSQL, Qdrant Cloud |
 | Packaging | Docker, Docker Compose |
+
+## Dataset Download and Setup
+
+This project uses the [Brazilian E-Commerce Public Dataset by Olist on Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). The dataset contains approximately 100,000 orders and associated information about customers, products, payments, sellers, reviews, and delivery performance.
+
+### 1. Download the Dataset
+
+1. Open the [Olist dataset on Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+2. Sign in to your Kaggle account.
+3. Download the dataset ZIP file.
+4. Extract the ZIP file on your local machine.
+
+### 2. Place the CSV Files in `data/raw/`
+
+Create the `data/raw/` directory if it does not already exist. Copy **all nine original CSV files** directly into that directory.
+
+The expected structure is:
+
+```text
+Olist-Logistics-Intelligence/
+└── data/
+    └── raw/
+        ├── olist_customers_dataset.csv
+        ├── olist_geolocation_dataset.csv
+        ├── olist_order_items_dataset.csv
+        ├── olist_order_payments_dataset.csv
+        ├── olist_order_reviews_dataset.csv
+        ├── olist_orders_dataset.csv
+        ├── olist_products_dataset.csv
+        ├── olist_sellers_dataset.csv
+        └── product_category_name_translation.csv
+```
+
+**Important:** Place the CSV files directly inside `data/raw/`. Do not leave them inside the downloaded ZIP file or an additional nested directory. The extraction pipeline expects the data at the paths configured by the project.
+
+### 3. Run the Data Pipeline
+
+After placing the original CSV files in `data/raw/`, review the configuration files and follow the ETL instructions in the project.
+
+The intended workflow is:
+
+```text
+data/raw/
+    ↓
+Extraction and Transformation
+    ↓
+data/cleaned/
+    ↓
+Load into PostgreSQL
+    ↓
+Feature Engineering and Preprocessing
+    ↓
+Model Training and Evaluation
+```
+
+The exact output paths and execution commands depend on the current pipeline configuration.
+
+### Dataset and Repository Notes
+
+- The original CSV files are not required to be committed to GitHub. Download them locally when setting up the project.
+- Keep raw data separate from cleaned and processed data.
+- Ensure the dataset filenames match the names expected by the extraction configuration.
+- Review the [official Kaggle dataset page](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) for attribution and licensing terms before redistributing the data.
+
 
 ## Repository structure
 
